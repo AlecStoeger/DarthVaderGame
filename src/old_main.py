@@ -102,28 +102,23 @@ def main():
             bomb_list[0].move(options.mute)
             bomb_list[1].move(options.mute)
 
-            temp_list = []
             for i in treasure_list:
-                dist = [abs(i.center_pos[X] - player.center_pos[X]), abs(i.center_pos[Y] - player.center_pos[Y])]
-                if dist[X] >= i.width //2 + player.radius or dist[Y] >= i.height //2 + player.radius:
-                    temp_list.append(i)
-                else:
+                # this method call is probably slowing the game down
+                if player.is_touching(i.center_pos, i.width, i.height):
+                    treasure_list.remove(i)
                     i.play_sound(options.mute)
-            treasure_list = temp_list
+
             if len(treasure_list) == 0:
-                if not options.mute:
-                    pygame.mixer.Sound.play(game_won)
+                options.play_sound(pygame.mixer.Sound.play, game_won)
                 color = "green"
                 message = pygame.font.SysFont("timesnewroman", 100).render(
                     "Congrats!", True, color)
                 game_over = True
 
             for i in bomb_list:
-                dist = [abs(i.center_pos[X] - player.center_pos[X]),
-                        abs(i.center_pos[Y] - player.center_pos[Y])]
-                if dist[X] + 25 <= i.radius + player.radius and dist[Y] + 25 <= i.radius + player.radius:
-                    if not options.mute:
-                        pygame.mixer.Sound.play(game_lost)
+                # same here
+                if player.is_touching(i.center_pos, i.width - 25, i.height - 25):
+                    options.play_sound(pygame.mixer.Sound.play, game_lost)
                     color = "red"
                     message = pygame.font.SysFont("timesnewroman", 100).render(
                         "Try Again?", True, color)
