@@ -1,0 +1,19 @@
+I want to add a settings menu or something similar once I learn frontend
+better, I may have to use something other than pygame at that point though idk.
+
+A settings menu that has a selector that will highlight over what setting you're on.
+You press enter to toggle between, maybe arrow keys or mouse to select which setting
+enter or space should be the key to toggle for all settings
+
+An option to slightly speed up/ slow down the gameplay would also be fun. maybe
+1.25x and .75x (changeable via arrow keys)
+
+If the speed up option is a thing, I may want to change how I randomize the
+darth vaders' movement and make it so their x velocity is random isntead of
+their y velocity
+
+At some point an ice movement feature would be fun but that was tough.
+
+Maybe an option for a username and a highscore type of thing? (high scores is a huge yes)
+Option to change the profile of the player icon?
+The difficulty would be in making sure the image is the right size to fit luke's hitbox
